@@ -6,7 +6,9 @@ public class Principal {
 		FAT fat = new FAT();
 		
 		fat.mostrarMetadatos();
-		fat.crearDirectorio("peliculasNoVistas");
+		fat.crearDirectorio("peliculasNoVistas", "C:/");
+		fat.crearArchivo("exmachina", 3, "C:/");
+		fat.mostrarMetadatos();
 	}
 
 }

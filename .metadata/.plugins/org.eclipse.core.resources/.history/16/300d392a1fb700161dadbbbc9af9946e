@@ -1,0 +1,26 @@
+
+public class Directorio extends Cluster{
+	private String nombreDirectorio;
+	private EntradaDirectorio [] listaDirectorios;
+	
+	public Directorio(String nombre)
+	{
+		nombreDirectorio = nombre;
+		listaDirectorios = new EntradaDirectorio[20];
+		for(int i = 0; i < 20; i++)
+		{
+			listaDirectorios[i] = null;
+		}
+	}
+	
+	public String getNombre()
+	{
+		return nombreDirectorio;
+	}
+	
+	public void introducirEntrada(String nombre, int num, char tipo)
+	{
+		listaDirectorios[0] = new EntradaDirectorio(nombre, num, tipo);
+	}
+	
+}

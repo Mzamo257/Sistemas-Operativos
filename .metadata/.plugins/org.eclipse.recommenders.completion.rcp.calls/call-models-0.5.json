@@ -1,0 +1,12 @@
+{
+  "C:\\Program Files\\Java\\jre1.8.0_101\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "C:\\Program Files\\Java\\jre1.8.0_101\\lib\\rt.jar",
+    "status": "RESOLVED"
+  },
+  "C:\\Users\\USUARIO\\Documents\\Sistemas-Operativos\\TrabajoSistemas\\src": {
+    "location": "C:\\Users\\USUARIO\\Documents\\Sistemas-Operativos\\TrabajoSistemas\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\USUARIO\\Documents\\Sistemas-Operativos\\TrabajoSistemas\\src\u0027. Skipped."
+  }
+}
