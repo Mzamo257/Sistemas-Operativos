@@ -15,6 +15,26 @@ public class EntradaFat {
 		return fin;
 	}
 	
+	public int getSiguiente()
+	{
+		return siguiente;
+	}
+	
+	public void setDisponible(boolean cambio)
+	{
+		disponible = cambio;
+	}
+	
+	public void setFin(boolean cambio)
+	{
+		fin = cambio;
+	}
+	
+	public void setSiguiente(int numCluster)
+	{
+		siguiente = numCluster;
+	}
+	
 	
 		
 }
