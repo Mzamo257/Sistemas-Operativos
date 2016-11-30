@@ -1,0 +1,5 @@
+
+public class Directorio {
+	private String nombreDirectorio;
+	private EntradaDirectorio [] listaDirectorios;
+}

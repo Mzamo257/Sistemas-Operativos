@@ -9,7 +9,6 @@ INDEX VERSION 1.126+C:\Users\USUARIO\Documents\Sistemas-Operativos\.metadata\.pl
 2637943071.index
 2800558102.index
 1075794691.index
-4061341033.index
 3407430047.index
 4184201189.index
 808374113.index

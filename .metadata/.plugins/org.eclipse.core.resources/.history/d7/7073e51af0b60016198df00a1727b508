@@ -1,0 +1,36 @@
+
+public class Dato {
+	private String nombreArchivo;
+	private int parteArchivo;
+	private int totalArchivo;
+	
+	public String getNombre()
+	{
+		return nombreArchivo;
+	}
+	
+	public int getParte()
+	{
+		return parteArchivo;
+	}
+	
+	public int getTotal()
+	{
+		return totalArchivo;
+	}
+	
+	public void setNombre(String nombre)
+	{
+		nombreArchivo = nombre;
+	}
+	
+	public void setParte(int parte)
+	{
+		parteArchivo = parte;
+	}
+	
+	public void setTotal(int total)
+	{
+		totalArchivo = total;
+	}
+}

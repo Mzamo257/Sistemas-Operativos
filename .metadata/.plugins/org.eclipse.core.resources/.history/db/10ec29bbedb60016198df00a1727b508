@@ -1,0 +1,14 @@
+
+public class FAT {
+	EntradaFat [] entradasFat;
+	Cluster [] clusters;
+	
+	public FAT()
+	{
+		EntradaFat [] entradasFat = new  EntradaFat[20];
+		Cluster [] clusters = new Cluster[20];
+	}
+	
+	
+	
+}

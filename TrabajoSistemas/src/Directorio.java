@@ -1,4 +1,22 @@
 
-public class Directorio {
-
+public class Directorio extends Cluster{
+	private String nombreDirectorio;
+	private EntradaDirectorio [] listaDirectorios;
+	
+	public Directorio(String nombre)
+	{
+		nombreDirectorio = nombre;
+		listaDirectorios = null;
+	}
+	
+	public String getNombreDirectorio()
+	{
+		return nombreDirectorio;
+	}
+	
+	public void introducirEntrada()
+	{
+		listaDirectorios[0] = new EntradaDirectorio("nombre", 0, 'c');
+	}
+	
 }

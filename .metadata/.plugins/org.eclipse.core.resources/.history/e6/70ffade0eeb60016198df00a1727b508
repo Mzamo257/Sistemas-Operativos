@@ -1,0 +1,28 @@
+
+public class FAT {
+	EntradaFat [] entradasFat;
+	Cluster [] clusters;
+	
+	public FAT()
+	{
+		EntradaFat [] entradasFat = new  EntradaFat[20];
+		Cluster [] clusters = new Cluster[20];
+		for(int  i = 0; i < 20; i++)
+		{
+			entradasFat[i] = new EntradaFat();
+			clusters[i] = new Cluster();
+		}
+	}
+	
+	public void mostrarMetadatos()
+	{
+		for(int i = 0; i < 20; i++)
+		{
+			System.out.println("Cluster " + i + ":");
+			entradasFat[i].mostrar();
+		}
+	}
+	
+	
+	
+}
