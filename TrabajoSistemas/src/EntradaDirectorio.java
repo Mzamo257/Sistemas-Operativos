@@ -26,7 +26,7 @@ public class EntradaDirectorio {
 		return tipo;
 	}
 	
-	/*public void setNombre(String nom)
+	public void setNombre(String nom)
 	{
 		nombre = nom;
 	}
@@ -39,5 +39,5 @@ public class EntradaDirectorio {
 	public void setTipo(char tipoCluster)
 	{
 		tipo = tipoCluster;
-	}*/
+	}
 }

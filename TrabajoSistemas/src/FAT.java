@@ -34,11 +34,7 @@ public class FAT {
 		if(numeroClustersDisponibles() != 0)
 		{
 			int clust = buscarClusterDisponible();
-			//busco el directorio en el que quiero guardar el archivo
-			for(int i = 0; i < 20; i++)
-			{
-				if(((Directorio) clusters[i]).getNombre() == dondeGuardar){((Directorio) clusters[i]).introducirEntrada(nombre, clust, 'D');break;};
-			}
+			crearEntradaDirectorio(nombre, dondeGuardar, 'D', clust);
 			//Guardo el directorio
 			clusters[clust] = new Directorio(nombre);
 			entradasFat[clust].setDisponible(false);
@@ -54,11 +50,7 @@ public class FAT {
 		if(numeroClustersDisponibles() > tam)
 		{
 			int clust = buscarClusterDisponible();
-			//busco el directorio en el que quiero guardar el archivo
-			for(i = 0; i < 20; i++)
-			{
-				if(((Directorio) clusters[i]).getNombre() == nombreDirectorio){((Directorio) clusters[i]).introducirEntrada(nombreArchivo, clust, 'A'); break;};
-			}
+			crearEntradaDirectorio(nombreArchivo, nombreDirectorio, 'A', clust);
 			//meto los trocitos del archivo en los distintos clusters
 			for(i = 1; i <= tam; i++)
 			{
@@ -95,6 +87,68 @@ public class FAT {
 		return contador;
 	}
 	
+	public void moverArchivo(String archivoAMover, String directorioDestino, String directorioActual)
+	{
+		int i;
+		int j;
+		int clusterDelDirectorio = 0;
+		int posicionEntradaDirectorio = 0;
+		for(i= 0; i < 20; i++)
+		{
+			if(clusters[i] instanceof Directorio)
+			{
+				if(((Directorio) clusters[i]).getNombre() == directorioActual)
+				{
+					clusterDelDirectorio = i;
+					for(j = 0; j < 20; j++)
+					{	
+						if(((Directorio) clusters[i]).getNombreListaDirectorios(j)== archivoAMover)
+						{
+							posicionEntradaDirectorio = j;
+							break;
+						};
+					}
+				}
+			}
+		}
+		int clust = ((Directorio) clusters[clusterDelDirectorio]).getClusterIn(posicionEntradaDirectorio);
+		eliminarEntradaDirectorio(archivoAMover, directorioActual);
+		crearEntradaDirectorio(archivoAMover, directorioDestino, 'A', clust);
+	}
 	
+	public void crearEntradaDirectorio(String nombreArchivo, String nombreDirectorio, char tipo, int clust)
+	{
+		//busco el directorio en el que quiero guardar el archivo
+		for(int i = 0; i < 20; i++)
+		{
+			if(clusters[i] instanceof Directorio)
+			{
+				if(((Directorio) clusters[i]).getNombre() == nombreDirectorio)
+				{
+					((Directorio) clusters[i]).introducirEntrada(nombreArchivo, clust, tipo);
+					break;
+				}
+			}
+		}
+	}
 	
+	public void eliminarEntradaDirectorio(String nombreArchivo, String dondeEliminar)
+	{
+		for(int i= 0; i < 20; i++)
+		{
+			if(clusters[i] instanceof Directorio)
+			{
+				if(((Directorio) clusters[i]).getNombre() == dondeEliminar)
+				{
+					for(int j = 0; j < 20; j++)
+					{	
+						if(((Directorio) clusters[i]).getNombreListaDirectorios(j) == nombreArchivo)
+						{
+							((Directorio) clusters[i]).eliminarEntrada(j);
+						}
+					}
+				}
+			}
+		}
+	}
 }

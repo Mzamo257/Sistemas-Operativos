@@ -1,0 +1,4 @@
+
+public class Cluster {
+	public String getNombre(){return "";}
+}
