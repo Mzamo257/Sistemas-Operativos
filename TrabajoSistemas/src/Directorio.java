@@ -42,4 +42,14 @@ public class Directorio extends Cluster{
 		return listaDirectorios[i].getClusterIn();
 	}
 	
+	public char getTipoDato(int i)
+	{
+		return listaDirectorios[i].getTipo();
+	}
+	
+	public int getNumDir(int i)
+	{
+		return numDirec;
+	}
+	
 }

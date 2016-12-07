@@ -26,6 +26,7 @@ public class FAT {
 			System.out.println("\nCluster " + i + ":");
 			entradasFat[i].mostrar();
 		}
+		System.out.println("\n**********\n");
 	}
 	
 	public void crearDirectorio(String nombre, String dondeGuardar)
@@ -42,7 +43,7 @@ public class FAT {
 		}
 	}
 	
-	public void crearArchivo(String nombreArchivo, int tam, String nombreDirectorio)//tam = tamaño máximo, se debería cambiar a un double para poder poner decimales y redondear
+	public void crearArchivo(String nombreArchivo, int tam, String nombreDirectorio)//tam = tamaï¿½o mï¿½ximo, se deberï¿½a cambiar a un double para poder poner decimales y redondear
 	{		
 		int clusterAnterior = 0;
 		int i;
@@ -93,7 +94,7 @@ public class FAT {
 		int j;
 		int clusterDelDirectorio = 0;
 		int posicionEntradaDirectorio = 0;
-		for(i= 0; i < 20; i++)
+		for(i= 0; i < 20; i++) //Busca el cluster donde se inicia el archivo o directorio
 		{
 			if(clusters[i] instanceof Directorio)
 			{
@@ -106,8 +107,9 @@ public class FAT {
 						{
 							posicionEntradaDirectorio = j;
 							break;
-						};
+						}
 					}
+					break;
 				}
 			}
 		}
@@ -145,10 +147,60 @@ public class FAT {
 						if(((Directorio) clusters[i]).getNombreListaDirectorios(j) == nombreArchivo)
 						{
 							((Directorio) clusters[i]).eliminarEntrada(j);
+							break;
 						}
 					}
+				break;
 				}
 			}
 		}
 	}
+	
+	public void eliminarDirectorio(String dirAEliminar)
+	{
+		for(int i= 0; i < 20; i++) //Busca el cluster donde se inicia el archivo o directorio
+		{
+			if(clusters[i] instanceof Directorio)
+			{
+				if(((Directorio) clusters[i]).getNombre() == dirAEliminar)
+				{
+					for(int j = 0; j < ((Directorio) clusters[i]).getNumDir(j) ; j++)
+					{
+						if(((Directorio) clusters[i]).getTipoDato(j) == 'D')
+						{
+							eliminarDirectorio(((Directorio) clusters[i]).getNombreListaDirectorios(j));
+							
+						}
+						else if (((Directorio) clusters[i]).getTipoDato(j) == 'A')
+						{
+							eliminarArchivo(((Directorio) clusters[i]).getNombreListaDirectorios(j));
+						}
+						else
+						{
+							System.out.println("Lo sentimos, estamos experimentando fallos tÃ©cnicos :(");
+						}
+						
+					}
+					entradasFat[i].setDisponible(true);
+					break;
+				}
+			}
+		}
+	}
+	
+	public void eliminarArchivo(String archAEliminar)
+	{
+		for(int i = 0; i < 20 ; i++)
+		{
+			if(clusters[i] instanceof Dato)
+			{
+				if(archAEliminar == ((Dato) clusters[i]).getNombre())
+				{
+					entradasFat[i].setDisponible(true);
+				}
+
+			}
+		}
+	}
+
 }
