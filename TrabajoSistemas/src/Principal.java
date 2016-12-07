@@ -14,7 +14,7 @@ public class Principal {
 		fat.mostrarMetadatos();
 		fat.eliminarDirectorio("peliculasVistas");
 		fat.mostrarMetadatos();
-		//4)�Listar procesos en ejecuci�n.
+		//4)Listar procesos en ejecucion.
 		fat.crearDirectorio("tmp", "C:/");
 		fat.crearArchivo("Gattaca", 3, "tmp");
 		fat.crearArchivo("Memento", 3, "tmp");
